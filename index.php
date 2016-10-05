@@ -2,7 +2,7 @@
     
 $mainUrl = "http://vak.ed.gov.ru";
 $spec = @$_GET['spec'];
-$toDate = rawurldecode(strftime('%Y-%m-%d', time() + 30*24*60*60));
+$toDate = rawurldecode(strftime('%Y-%m-%d', time() + 3*30*24*60*60));
 $fromDate = rawurldecode(strftime('%Y-%m-%d', time() - 30*24*60*60));
 $url = "$mainUrl/ais/vak/templates/vak_idc.list.php?cmd=*WHERE%20(a.shifr_nauch_spec%20%3D%20%3F)%20AND%20(a.date_zach%20%3C%3D%20%3F)%20AND%20(a.date_zach%20%3E%3D%20%3F)&args[]=$spec&args[]=$toDate&args[]=$fromDate";
 
