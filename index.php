@@ -1,5 +1,4 @@
 <?php
-    
 $mainUrl = "http://vak.ed.gov.ru";
 $spec = @$_GET['spec'];
 $toDate = rawurldecode(strftime('%Y-%m-%d', time() + 3*30*24*60*60));
