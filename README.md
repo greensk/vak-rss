@@ -1,5 +1,5 @@
 # vak-rss
-Tool to notify about new dissertations via RSS. Parses [Higher Attestation Commission (VAK)](http://vak.ed.gov.ru/) website.
+Tool to notify about new dissertations via `RSS`. Parses [Higher Attestation Commission (VAK)](http://vak.ed.gov.ru/) website.
 ## System requirements
 PHP 5.4+, PHP-XML.
 ## Usage
