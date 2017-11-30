@@ -15,7 +15,7 @@ preg_match_all('/\/dis\-details\?xPARAM\=(\d+)/', $mainContent, $matches);
 $items = [];
 
 foreach ($matches[1] as $id) {
-    $dissUrl = "http://vak.ed.gov.ru/ais/vak/idc2/$id";
+    $dissUrl = "$mainUrl/ais/vak/idc2/{$id}:100";
     $dissContent = file_get_contents($dissUrl);
     $dom = new DOMDocument;
     @$dom->loadHTML($dissContent);
@@ -26,7 +26,7 @@ foreach ($matches[1] as $id) {
     
     $items[] = [
         'guid' => $id,
-        'link' => "http://vak.ed.gov.ru/dis-details?xPARAM=$id",
+        'link' => "$mainUrl/dis-details?xPARAM={$id}:100",
         'description' => $description,
         'title' => fetchValue($dom, 'Название темы диссертации'),
         'author' => fetchValue($dom, 'Фамилия, имя, отчество соискателя'),
@@ -38,7 +38,7 @@ include 'atom.php';
 
 function fetchValue ($dom, $name) {
     $xpath = new DOMXPath($dom);
-    $entries = $xpath->query('//em[string()="' . $name .  '"]/../../td[2]');
+    $entries = $xpath->query('//em[contains(string(), "' . $name .  '")]/../../td[2]');
     if ($entries->length > 0) {
         return $entries->item(0)->textContent;
     } else {
